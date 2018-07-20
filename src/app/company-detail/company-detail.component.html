@@ -1,0 +1,101 @@
+<nav aria-label="breadcrumb">
+    <!-- <ol class="breadcrumb primaryb200" style="    padding: 25px 15px;">
+
+
+    </ol> -->
+  </nav>
+
+  <div class="container-fluid">
+    <br>
+    <div class="row-fluid">
+      <div class="col-md-12">
+        <mat-card class="example-card mat-elevation-z10">
+          <mat-card-header>
+            <mat-card-title>
+              <h1>
+                {{title}}
+              </h1>
+            </mat-card-title>
+
+          </mat-card-header>
+          <mat-card-content>
+            <div>
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Company Name</mat-label>
+                  <input id="CompanyName" #model="ngModel" matInput [(ngModel)]="cd.CompanyName" required>
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Address Line 1</mat-label>
+                  <input id="AddressLine1" #model="ngModel" matInput [(ngModel)]="cd.AddressLine1">
+
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Address Line 2</mat-label>
+                  <input id="AddressLine2" #model="ngModel" matInput [(ngModel)]="cd.AddressLine2">
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Postal Code</mat-label>
+                  <input id="PostalCode" #model="ngModel" matInput [(ngModel)]="cd.PostalCode">
+                </mat-form-field>
+              </div>
+
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>MobileNo</mat-label>
+                  <input id="MobileNo" #model="ngModel" matInput [(ngModel)]="cd.MobileNo">
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>EmailId</mat-label>
+                  <input id="EmailId" #model="ngModel" matInput [(ngModel)]="cd.EmailId">
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Website</mat-label>
+                  <input id="Website" #model="ngModel" matInput [(ngModel)]="cd.Website">
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>GstNo</mat-label>
+                  <input id="GSTNo" #model="ngModel" matInput [(ngModel)]="cd.GSTNo">
+                </mat-form-field>
+              </div>
+
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Username</mat-label>
+                  <input id="username" #model="ngModel" matInput [(ngModel)]="ua.LoginId">
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Password</mat-label>
+                  <input id="password" #model="ngModel" matInput [(ngModel)]="ua.Password">
+                </mat-form-field>
+              </div>
+
+              <div>
+                <button matTooltip="Save" mat-stroked-button color="primary" class="btn btn-primary btn-sm btn-block" (click)="cs.SaveCompanyDetail(cd,ua.LoginId,ua.Password)">
+                  Save
+                </button>
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+  </div>
+  <br>
+  <br>

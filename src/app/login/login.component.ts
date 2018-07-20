@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   password: string;
   ua: UserAccount;
 
-  constructor(public applib: AppLibService) {
+  constructor(public applib: AppLibService, public router: Router) {
   }
 
   Login() {
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
             if (d !== null) {
               if (this.applib.loginUser) {
                 alert('Successfull');
-            //  this.router.navigate(['/hrportal-navbar/']);
+             this.router.navigate(['/Menu/']);
                }
             }
 

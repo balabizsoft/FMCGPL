@@ -28,6 +28,11 @@ import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SignalRModule, SignalRConfiguration} from 'ng2-signalr';
 import { LoginComponent } from './login/login.component';
+import { CompanyDetailComponent } from './company-detail/company-detail.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { MainComponent } from './main/main.component';
+import { FmcgNavbarComponent } from './fmcg-navbar/fmcg-navbar.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 export function createConfig(): SignalRConfiguration {
 const c = new SignalRConfiguration;
@@ -41,7 +46,10 @@ return c;
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    CompanyDetailComponent,
+    MainComponent,
+    FmcgNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +77,9 @@ return c;
     MatSelectModule,
     FormsModule,
     BrowserAnimationsModule,
-    SignalRModule.forRoot(createConfig)
+    SignalRModule.forRoot(createConfig),
+    AppRoutingModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

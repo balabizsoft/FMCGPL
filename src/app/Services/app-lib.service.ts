@@ -23,7 +23,7 @@ export class AppLibService {
     localStorage.setItem('LoginId', this.loginUser.LoginId);
     localStorage.setItem('Password', this.loginUser.Password);
     localStorage.setItem('UserType', this.loginUser.Type);
-    localStorage.setItem('CompanyId', JSON.stringify(this.loginUser.CompanyId) );
+    localStorage.setItem('CompanyId', JSON.stringify(this.loginUser.CompanyId));
   }
 
   constructor(private s1: SignalR) {
@@ -35,7 +35,10 @@ export class AppLibService {
         console.log(cd);
         this.companyDetailList = cd;
       });
-
+      this.con.invoke('ListUserAccount').then(ua => {
+        console.log(ua);
+        this.userAccountList = ua;
+      });
     });
   }
 }
