@@ -12,23 +12,30 @@ export class AppLibService {
   userAccountList: UserAccount[];
   userTypeList: UserType[];
   con: SignalRConnection;
+  loginUser: UserAccount;
+
+  public RemoveLoginLocalStorage() {
+    localStorage.removeItem('LoginId');
+    localStorage.removeItem('Password');
+    localStorage.removeItem('UserType');
+  }
+  SetLoginLocalStorage() {
+    localStorage.setItem('LoginId', this.loginUser.LoginId);
+    localStorage.setItem('Password', this.loginUser.Password);
+    localStorage.setItem('UserType', this.loginUser.Type);
+    localStorage.setItem('CompanyId', JSON.stringify(this.loginUser.CompanyId) );
+  }
+
   constructor(private s1: SignalR) {
     this.con = this.s1.createConnection();
     console.log(this.con.status);
     this.con.start().then(x => {
       console.log(x);
-      this.con.invoke('').then(cd => {
+      this.con.invoke('ListCompanyDetail').then(cd => {
         console.log(cd);
         this.companyDetailList = cd;
       });
-      this.con.invoke('').then(ua => {
-        console.log(ua);
-        this.userAccountList = ua;
-      });
-      this.con.invoke('').then(ut => {
-        console.log(ut);
-        this.userTypeList = ut;
-      });
+
     });
   }
 }

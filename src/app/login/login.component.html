@@ -1,0 +1,60 @@
+
+
+<nav aria-label="breadcrumb">
+    <!-- <ol class="breadcrumb primaryb200" style="    padding: 25px 15px;">
+
+
+    </ol> -->
+  </nav>
+
+  <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-sm-6 col-md-6 col-md-offset-3 row-sm-6">
+        <mat-card class="example-card mat-elevation-z10" style="text-align: center ">
+          <mat-card-header style="display: block ; margin: 0 auto">
+            <mat-card-title >
+              <h1 >
+              Login
+              </h1>
+            </mat-card-title>
+
+          </mat-card-header>
+          <mat-card-content>
+            <div>
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Company Name</mat-label>
+                  <input id="CompanyName" #model="ngModel" matInput [(ngModel)]="cmpnyName" required>
+                </mat-form-field>
+              </div>
+
+              <div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Username</mat-label>
+                  <input id="username" #model="ngModel" matInput [(ngModel)]="username">
+                </mat-form-field>
+              </div>
+              <div>
+                <mat-form-field  appearance="legacy">
+                  <mat-label>Password</mat-label>
+                  <input id="password" type="password" #model="ngModel" matInput [(ngModel)]="password">
+                </mat-form-field>
+              </div>
+
+              <div>
+                <button  matTooltip=" Sign In" mat-stroked-button color="Primary" class="btn btn-primary btn-sm " (click)="Login()" style="margin:5px 20px 20px 10px">
+                Sign In
+                </button>
+                <a matTooltip="Company Registration"  color="Primary"  routerLink= "/Company">Sign Up</a>
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+  </div>
+  <br>
+  <br>
