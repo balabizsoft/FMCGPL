@@ -8,27 +8,27 @@ import { SignalR, SignalRConnection } from 'ng2-signalr';
   providedIn: 'root'
 })
 export class AppLibService {
-companyDetailList: CompanyDetail[];
-userAccountList: UserAccount[];
-userTypeList: UserType[];
- con: SignalRConnection;
+  companyDetailList: CompanyDetail[];
+  userAccountList: UserAccount[];
+  userTypeList: UserType[];
+  con: SignalRConnection;
   constructor(private s1: SignalR) {
-this.con = this.s1.createConnection();
-console.log(this.con.status);
-this.con.start().then(x => {
-console.log(x);
-this.con.invoke('').then(cd => {
-  console.log(cd);
-  this.companyDetailList = cd;
-});
-this.con.invoke('').then(ua => {
-  console.log(ua);
-  this.userAccountList = ua;
-});
-this.con.invoke('').then(ut => {
-  console.log(ut);
-  this.userTypeList = ut;
-});
-});
+    this.con = this.s1.createConnection();
+    console.log(this.con.status);
+    this.con.start().then(x => {
+      console.log(x);
+      this.con.invoke('').then(cd => {
+        console.log(cd);
+        this.companyDetailList = cd;
+      });
+      this.con.invoke('').then(ua => {
+        console.log(ua);
+        this.userAccountList = ua;
+      });
+      this.con.invoke('').then(ut => {
+        console.log(ut);
+        this.userTypeList = ut;
+      });
+    });
   }
 }

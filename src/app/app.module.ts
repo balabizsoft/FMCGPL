@@ -7,8 +7,8 @@ import {SignalRModule, SignalRConfiguration} from 'ng2-signalr';
 
 export function createConfig(): SignalRConfiguration {
 const c = new SignalRConfiguration;
-c.hubName = '';
-c.url = '';
+c.hubName = 'FMCGHub';
+c.url = 'http://localhost/FMCG.SL';
 c.logging = true;
 
 return c;
