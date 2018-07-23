@@ -53,8 +53,10 @@ export class CompanyDetailService {
           console.log(x);
 
           cd.Id = x;
-          if (x !== 0) {
+          if (cd.Id === 0) {
             this.router.navigate(['Login']);
+          } else if (cd.Id !== 0) {
+
           }
         });
     }

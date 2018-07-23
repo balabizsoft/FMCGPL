@@ -16,6 +16,7 @@ export class CompanyDetailComponent implements OnInit {
 title: string;
 
   constructor(public cs: CompanyDetailService, public applib: AppLibService) {
+
 if (!applib.loginUser) {
   this.title = 'Company Registration';
 this.cd = new CompanyDetail();
@@ -25,6 +26,7 @@ this.ua = new UserAccount();
 this.cd = this.applib.companyDetailList.find(x => x.Id === applib.loginUser.CompanyId);
 this.ua = this.applib.userAccountList.find(y => y.LoginId === applib.loginUser.LoginId);
 }
+console.log(applib.loginUser);
   }
   ngOnInit() {
   }

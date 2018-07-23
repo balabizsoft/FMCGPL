@@ -13,7 +13,15 @@ export class AppLibService {
   userTypeList: UserType[];
   con: SignalRConnection;
   loginUser: UserAccount;
-
+  companyName: CompanyDetail = new CompanyDetail();
+  public GetLoginLocalStorage(): UserAccount {
+    const ua: UserAccount = new UserAccount();
+    ua.LoginId = localStorage.getItem('LoginId');
+    ua.Password = localStorage.getItem('Password');
+    ua.Type = localStorage.getItem('UserType');
+    ua.CompanyId = JSON.parse(localStorage.getItem('CompanyId')) ;
+    return ua;
+  }
   public RemoveLoginLocalStorage() {
     localStorage.removeItem('LoginId');
     localStorage.removeItem('Password');
@@ -25,16 +33,39 @@ export class AppLibService {
     localStorage.setItem('UserType', this.loginUser.Type);
     localStorage.setItem('CompanyId', JSON.stringify(this.loginUser.CompanyId));
   }
+  AutoLogin() {
+    const ua: UserAccount = this.GetLoginLocalStorage();
+    console.log('Auto Login Start');
+    console.log('Login: ', ua);
+this.companyName = this.companyDetailList.find(x => x.Id === ua.CompanyId);
+    if (ua.LoginId && ua.Password ) {
+      this.con
+      .invoke('UserAccount_Login', this.companyName.CompanyName, ua.LoginId, ua.Password)
+      .then(x => {
+        console.log(x);
+        this.loginUser = x;
+        this.loginUser.Password = ua.Password;
+        if (this.loginUser !== undefined) {
+          console.log('Auto Logined');
+        }
+      });
+
+    }
+    console.log('Auto Login End');
+  }
 
   constructor(private s1: SignalR) {
     this.con = this.s1.createConnection();
     console.log(this.con.status);
     this.con.start().then(x => {
       console.log(x);
+
       this.con.invoke('ListCompanyDetail').then(cd => {
         console.log(cd);
         this.companyDetailList = cd;
+        this.AutoLogin();
       });
+
       this.con.invoke('ListUserAccount').then(ua => {
         console.log(ua);
         this.userAccountList = ua;
