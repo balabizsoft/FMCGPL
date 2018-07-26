@@ -70,9 +70,13 @@ export class CompanyDetailService {
     } else {
       this.applib.con.invoke('DeleteCompanyDetail', cd.Id).then(x => {
         console.log(x);
-        this.applib.companyDetailList = this.applib.companyDetailList.filter(
-          y => y.Id !== cd.Id
-        );
+        if (x === true) {
+         alert('deleted');
+          this.applib.companyDetailList = this.applib.companyDetailList.filter(
+            y => y.Id !== cd.Id
+          );
+        }
+
       });
     }
   }

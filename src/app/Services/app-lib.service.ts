@@ -5,6 +5,7 @@ import { UserType } from '../Models/UserType';
 import { SignalR, SignalRConnection } from 'ng2-signalr';
 import { AppConnection } from '../Models/AppConnection';
 import { AccountGroup } from '../Models/AccountGroup';
+import { Ledger } from '../Models/Ledger';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class AppLibService {
   userTypeList: UserType[];
   appConnectionList: AppConnection[];
   accountGroupList: AccountGroup[];
+  ledgerList: Ledger[];
 
   // Login
   public GetLoginLocalStorage(): UserAccount {
@@ -91,6 +93,10 @@ export class AppLibService {
       this.con.invoke('AccountGroupList').then(ac => {
         console.log(ac);
         this.accountGroupList = ac;
+      });
+      this.con.invoke('LedgerList').then(l => {
+        console.log(l);
+        this.accountGroupList = l;
       });
     });
   }
