@@ -38,19 +38,17 @@ export class AccountGroupService {
         this.applib.accountGroupList.push(new AccountGroup());
       }
       d.Id = accountGroup.Id;
-
       d.CompanyId = accountGroup.CompanyId;
       d.UnderCompanyId = accountGroup.UnderCompanyId;
-
       d.GroupCode = accountGroup.GroupCode;
       d.GroupName = accountGroup.GroupName;
+      d.UnderCompanyName = accountGroup.UnderCompanyName;
     } else {
       this.applib.con
         .invoke('AccountGroupSave', accountGroup)
         .then(x => {
           console.log(x);
 
-          accountGroup.Id = x;
           if (accountGroup.Id === 0) {
             accountGroup.Id = x;
             this.applib.accountGroupList.push(accountGroup);

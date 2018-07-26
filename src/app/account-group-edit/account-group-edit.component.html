@@ -31,7 +31,7 @@
               <br>
 
                 <mat-form-field style="width:40%">
-                    <mat-select placeholder="Under Company" [(ngModel)] = "accountGroup" (selectionChange)="accountGroup_Selection()">
+                    <mat-select placeholder="Under Company" [(ngModel)] = "accountGroup.UnderCompanyId" (selectionChange)="accountGroup_Selection()">
                       <mat-option *ngFor="let undercompany of applib.accountGroupList" [value]="undercompany">
                       {{undercompany.GroupName}}
                       </mat-option>

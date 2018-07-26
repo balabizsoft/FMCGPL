@@ -7,6 +7,8 @@ import { FmcgNavbarComponent } from './fmcg-navbar/fmcg-navbar.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { AccountGroupComponent } from './account-group/account-group.component';
 import { AccountGroupEditComponent } from './account-group-edit/account-group-edit.component';
+import { LedgerComponent } from './ledger/ledger.component';
+import { LedgerEditComponent } from './ledger-edit/ledger-edit.component';
 
 
 
@@ -17,7 +19,9 @@ const route: Routes = [
   {path: 'Menu', component: FmcgNavbarComponent},
   {path: 'DashBoard', component: DashBoardComponent},
   {path: 'AccountGroup', component: AccountGroupComponent},
-  {path: 'AccountGroupEdit/:id', component: AccountGroupEditComponent}
+  {path: 'AccountGroupEdit/:id', component: AccountGroupEditComponent},
+  {path: 'Ledger', component: LedgerComponent},
+  {path: 'LedgerEdit/:id', component: LedgerEditComponent}
 ];
 @NgModule({
   imports: [

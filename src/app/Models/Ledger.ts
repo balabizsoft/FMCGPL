@@ -11,10 +11,11 @@ export class Ledger {
   OpeningCr: number;
   TelephoneNo: string;
   MobileNo: string;
+  AccountGroupName: string;
 
   constructor() {
     this.Id = 0;
-    this.AccountGroupId = 0;
+    this.AccountGroupId = null;
     this.LedgerName = '';
     this.PersonInCharge = '';
     this.AddressLine1 = '';
@@ -25,5 +26,6 @@ export class Ledger {
     this.OpeningCr = 0;
     this.TelephoneNo = '';
     this.MobileNo = '';
+    this.AccountGroupName = null;
   }
 }

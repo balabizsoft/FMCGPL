@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AccountGroupEditComponent implements OnInit {
 
-
+Account: AccountGroup;
   accountGroup: AccountGroup;
   constructor(
     public applib: AppLibService,
@@ -30,7 +30,7 @@ export class AccountGroupEditComponent implements OnInit {
     });
   }
   accountGroup_Selection() {
-    this.accountGroup.UnderCompanyId = this.accountGroup.Id;
-    this.accountGroup.UnderCompanyName = this.accountGroup.GroupName;
+    this.accountGroup.Id = this.Account.Id;
+    this.accountGroup.UnderCompanyName = this.Account.GroupName;
   }
 }

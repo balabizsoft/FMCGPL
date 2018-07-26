@@ -96,7 +96,7 @@ export class AppLibService {
       });
       this.con.invoke('LedgerList').then(l => {
         console.log(l);
-        this.accountGroupList = l;
+        this.ledgerList = l;
       });
     });
   }

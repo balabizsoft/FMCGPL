@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AppLibService } from '../Services/app-lib.service';
+import { LedgerService } from '../Services/ledger.service';
 
 @Component({
   selector: 'app-ledger',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LedgerComponent implements OnInit {
 
-  constructor() { }
+  constructor(public applib: AppLibService, public ledgerService: LedgerService) { }
 
   ngOnInit() {
   }
