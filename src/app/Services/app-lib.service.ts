@@ -3,6 +3,7 @@ import { CompanyDetail } from '../Models/CompanyDetail';
 import { UserAccount } from '../Models/UserAccount';
 import { UserType } from '../Models/UserType';
 import { SignalR, SignalRConnection } from 'ng2-signalr';
+import { AppConnection } from '../Models/AppConnection';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class AppLibService {
   userTypeList: UserType[];
   con: SignalRConnection;
   loginUser: UserAccount;
+  appConnectionList: AppConnection[];
   companyName: CompanyDetail = new CompanyDetail();
   public GetLoginLocalStorage(): UserAccount {
     const ua: UserAccount = new UserAccount();
@@ -69,6 +71,10 @@ this.companyName = this.companyDetailList.find(x => x.Id === ua.CompanyId);
       this.con.invoke('ListUserAccount').then(ua => {
         console.log(ua);
         this.userAccountList = ua;
+      });
+      this.con.invoke('ConnectedUsers').then(cu => {
+        console.log(cu);
+        this.appConnectionList = cu;
       });
     });
   }

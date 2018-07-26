@@ -4,7 +4,7 @@ import {
   MatInputModule,
   MatToolbarModule,
   MatButtonModule,
- MatSidenavModule,
+  MatSidenavModule,
   MatIconModule,
   MatListModule,
   MatGridListModule,
@@ -33,6 +33,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { MainComponent } from './main/main.component';
 import { FmcgNavbarComponent } from './fmcg-navbar/fmcg-navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { DashBoardComponent } from './dash-board/dash-board.component';
+
 
 export function createConfig(): SignalRConfiguration {
 const c = new SignalRConfiguration;
@@ -49,7 +51,8 @@ return c;
     LoginComponent,
     CompanyDetailComponent,
     MainComponent,
-    FmcgNavbarComponent
+    FmcgNavbarComponent,
+    DashBoardComponent
   ],
   imports: [
     BrowserModule,
