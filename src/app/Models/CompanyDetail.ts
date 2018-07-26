@@ -8,6 +8,7 @@ export class CompanyDetail {
   EmailId: string;
   GSTNo: string;
   Website: string;
+  UnderCompanyId: number;
 
   constructor() {
     this.Id = 0;
@@ -20,5 +21,6 @@ export class CompanyDetail {
     this.EmailId = '';
     this.GSTNo = '';
     this.Website = '';
+    this.UnderCompanyId = 0;
   }
 }

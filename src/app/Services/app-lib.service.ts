@@ -4,26 +4,32 @@ import { UserAccount } from '../Models/UserAccount';
 import { UserType } from '../Models/UserType';
 import { SignalR, SignalRConnection } from 'ng2-signalr';
 import { AppConnection } from '../Models/AppConnection';
+import { AccountGroup } from '../Models/AccountGroup';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppLibService {
+  con: SignalRConnection;
+  loginUser: UserAccount;
+  companyName: CompanyDetail = new CompanyDetail();
+
   companyDetailList: CompanyDetail[];
   userAccountList: UserAccount[];
   userTypeList: UserType[];
-  con: SignalRConnection;
-  loginUser: UserAccount;
   appConnectionList: AppConnection[];
-  companyName: CompanyDetail = new CompanyDetail();
+  accountGroupList: AccountGroup[];
+
+  // Login
   public GetLoginLocalStorage(): UserAccount {
     const ua: UserAccount = new UserAccount();
     ua.LoginId = localStorage.getItem('LoginId');
     ua.Password = localStorage.getItem('Password');
     ua.Type = localStorage.getItem('UserType');
-    ua.CompanyId = JSON.parse(localStorage.getItem('CompanyId')) ;
+    ua.CompanyId = JSON.parse(localStorage.getItem('CompanyId'));
     return ua;
   }
+
   public RemoveLoginLocalStorage() {
     localStorage.removeItem('LoginId');
     localStorage.removeItem('Password');
@@ -35,27 +41,33 @@ export class AppLibService {
     localStorage.setItem('UserType', this.loginUser.Type);
     localStorage.setItem('CompanyId', JSON.stringify(this.loginUser.CompanyId));
   }
+
   AutoLogin() {
     const ua: UserAccount = this.GetLoginLocalStorage();
     console.log('Auto Login Start');
     console.log('Login: ', ua);
-this.companyName = this.companyDetailList.find(x => x.Id === ua.CompanyId);
-    if (ua.LoginId && ua.Password ) {
+    this.companyName = this.companyDetailList.find(x => x.Id === ua.CompanyId);
+    if (ua.LoginId && ua.Password) {
       this.con
-      .invoke('UserAccount_Login', this.companyName.CompanyName, ua.LoginId, ua.Password)
-      .then(x => {
-        console.log(x);
-        this.loginUser = x;
-        this.loginUser.Password = ua.Password;
-        if (this.loginUser !== undefined) {
-          console.log('Auto Logined');
-        }
-      });
-
+        .invoke(
+          'UserAccount_Login',
+          this.companyName.CompanyName,
+          ua.LoginId,
+          ua.Password
+        )
+        .then(x => {
+          console.log(x);
+          this.loginUser = x;
+          this.loginUser.Password = ua.Password;
+          if (this.loginUser !== undefined) {
+            console.log('Auto Logined');
+          }
+        });
     }
     console.log('Auto Login End');
   }
 
+  // SignalR
   constructor(private s1: SignalR) {
     this.con = this.s1.createConnection();
     console.log(this.con.status);
@@ -75,6 +87,10 @@ this.companyName = this.companyDetailList.find(x => x.Id === ua.CompanyId);
       this.con.invoke('ConnectedUsers').then(cu => {
         console.log(cu);
         this.appConnectionList = cu;
+      });
+      this.con.invoke('').then(ac => {
+        console.log(ac);
+        this.accountGroupList = ac;
       });
     });
   }

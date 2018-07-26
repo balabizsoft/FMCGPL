@@ -56,7 +56,7 @@ export class CompanyDetailService {
           if (cd.Id === 0) {
             this.router.navigate(['Login']);
           } else if (cd.Id !== 0) {
-
+            this.router.navigate(['Menu']);
           }
         });
     }
