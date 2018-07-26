@@ -88,7 +88,7 @@ export class AppLibService {
         console.log(cu);
         this.appConnectionList = cu;
       });
-      this.con.invoke('').then(ac => {
+      this.con.invoke('AccountGroupList').then(ac => {
         console.log(ac);
         this.accountGroupList = ac;
       });

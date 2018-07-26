@@ -4,7 +4,7 @@ CompanyId: number;
 UnderCompanyId: number;
 GroupName: string;
 GroupCode: string;
-
+UnderCompanyName: string;
 constructor() {
 this.Id = 0;
 this.CompanyId = 0;

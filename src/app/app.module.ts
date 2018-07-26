@@ -34,6 +34,8 @@ import { MainComponent } from './main/main.component';
 import { FmcgNavbarComponent } from './fmcg-navbar/fmcg-navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DashBoardComponent } from './dash-board/dash-board.component';
+import { AccountGroupComponent } from './account-group/account-group.component';
+import { AccountGroupEditComponent } from './account-group-edit/account-group-edit.component';
 
 
 export function createConfig(): SignalRConfiguration {
@@ -52,7 +54,9 @@ return c;
     CompanyDetailComponent,
     MainComponent,
     FmcgNavbarComponent,
-    DashBoardComponent
+    DashBoardComponent,
+    AccountGroupComponent,
+    AccountGroupEditComponent
   ],
   imports: [
     BrowserModule,

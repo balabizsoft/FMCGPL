@@ -10,13 +10,13 @@ export class AccountGroupService {
 
   constructor(public applib: AppLibService, private router: Router) {
     this.applib.con
-      .listenFor<AccountGroup>('SaveAccountGroup')
+      .listenFor<AccountGroup>('AccountGroupSave')
       .subscribe(x => {
         console.log(x);
         this.SaveAccountGroup(x, true);
       });
     this.applib.con
-      .listenFor<AccountGroup>('DeleteAccountGroup')
+      .listenFor<AccountGroup>('AccountGroupDelete')
       .subscribe(x => {
         console.log(x);
         this.DeleteAccountGroup(x, true);
@@ -46,14 +46,16 @@ export class AccountGroupService {
       d.GroupName = accountGroup.GroupName;
     } else {
       this.applib.con
-        .invoke('SaveAccountGroup', accountGroup)
+        .invoke('AccountGroupSave', accountGroup)
         .then(x => {
           console.log(x);
 
           accountGroup.Id = x;
           if (accountGroup.Id === 0) {
-            this.router.navigate(['Login']);
+            accountGroup.Id = x;
+            this.applib.accountGroupList.push(accountGroup);
           }
+          this.router.navigate(['/AccountGroup']);
         });
     }
   }
@@ -64,7 +66,7 @@ export class AccountGroupService {
         x => x.Id !== accountGroup.Id
       );
     } else {
-      this.applib.con.invoke('DeleteAccountGroup', accountGroup.Id).then(x => {
+      this.applib.con.invoke('AccountGroupDelete', accountGroup.Id).then(x => {
         console.log(x);
         this.applib.accountGroupList = this.applib.accountGroupList.filter(
           y => y.Id !== accountGroup.Id
